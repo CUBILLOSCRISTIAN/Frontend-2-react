@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { getAuth } from "firebase/auth";
 import type { User } from "../domain/entities/User";
@@ -69,5 +70,13 @@ export class FirebaseAuthService implements AuthRepository {
         }
       });
     });
+  }
+
+  async resetPassword(email: string): Promise<void> {
+    try {
+      await sendPasswordResetEmail(auth, email);
+    } catch (error) {
+      throw mapFirebaseErrorToAppError(error);
+    }
   }
 }
