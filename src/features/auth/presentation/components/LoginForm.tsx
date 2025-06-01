@@ -89,6 +89,15 @@ export const LoginForm = () => {
       </div>
       {error && <p className="text-xs text-red-600 sm:text-sm">{error}</p>}
 
+      <div className="text-center text-sm mt-2">
+        <a
+          href="/forgot-password"
+          className="text-teal-accent-700 hover:underline"
+        >
+          ¿Olvidaste tu contraseña?
+        </a>
+      </div>
+
       <p
         className="mt-4 text-xs text-gray-600 sm:text-sm
         "
@@ -98,14 +107,6 @@ export const LoginForm = () => {
           Regístrate
         </a>
       </p>
-      <div className="text-right text-sm">
-        <a
-          href="/forgot-password"
-          className="text-teal-accent-700 hover:underline"
-        >
-          ¿Olvidaste tu contraseña?
-        </a>
-      </div>
     </form>
   );
 };

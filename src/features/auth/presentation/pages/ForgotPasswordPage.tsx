@@ -31,11 +31,16 @@ export const ForgotPasswordPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 border rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Recuperar contraseña</h2>
+    <div className="max-w-md mx-auto mt-20 p-6 border rounded-lg shadow-md bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+      <h2 className="text-2xl font-bold tracking-wide text-gray-900 dark:text-gray-300">
+        Recuperar contraseña
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="email" className="block font-medium">
+          <label
+            htmlFor="email"
+            className="block font-medium text-gray-700 dark:text-gray-200"
+          >
             Correo electrónico
           </label>
           <input
@@ -43,26 +48,34 @@ export const ForgotPasswordPage: React.FC = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 border rounded"
+            className="w-full px-3 py-2 border rounded bg-white text-gray-900 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="tucorreo@ejemplo.com"
             required
+            aria-label="Correo electrónico"
+            autoComplete="email"
           />
         </div>
 
-        {errorMsg && <p className="text-red-500 text-sm">{errorMsg}</p>}
-        {successMsg && <p className="text-green-600 text-sm">{successMsg}</p>}
+        {errorMsg && (
+          <p className="text-red-500 dark:text-red-400 text-sm">{errorMsg}</p>
+        )}
+        {successMsg && (
+          <p className="text-green-600 dark:text-green-400 text-sm">
+            {successMsg}
+          </p>
+        )}
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+          className="w-full inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-black dark:text-gray-100 transition duration-200 rounded shadow-md bg-teal-accent-400 dark:bg-teal-700 hover:bg-teal-accent-700 dark:hover:bg-teal-800 focus:shadow-outline focus:outline-none"
         >
-          Enviar instrucciones
+          Recuperar contraseña
         </button>
       </form>
 
       <div className="mt-4 text-center">
         <button
-          className="text-sm text-blue-500 hover:underline"
+          className="text-sm text-teal-accent-700 dark:text-teal-400 hover:underline"
           onClick={() => navigate("/login")}
         >
           Volver a iniciar sesión
