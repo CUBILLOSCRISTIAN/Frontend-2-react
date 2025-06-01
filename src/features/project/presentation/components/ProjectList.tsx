@@ -4,6 +4,7 @@ import { ProjectCardSkeleton } from "./ProjectCardSkeleton";
 import { useAuth } from "@/core/context/AuthContext";
 import { useUpdateProject } from "../hooks/useUpdateProject";
 import { useDeleteProject } from "../hooks/useDeleteProject";
+import { Blog } from "./Blog";
 
 interface ProjectListProps {
   projects: Project[];
@@ -53,7 +54,7 @@ export const ProjectList = ({
   return (
     <div className="grid gap-4 row-gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {projects.map((project) => (
-        <ProjectCard
+        <Blog
           key={project.id}
           project={project}
           isOwner={project.authorId === user?.id}

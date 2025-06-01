@@ -13,7 +13,7 @@ export const useGetMyProjects = () => {
     const fetchProjects = async () => {
       if (!user) return;
 
-      const getMyProjectsUseCase = container.getGetMyProjectsUseCase(user.id);
+      const getMyProjectsUseCase = container.getGetMyProjectsUseCase();
 
       setLoading(true);
       setError(null);
@@ -36,7 +36,7 @@ export const useGetMyProjects = () => {
   const handleRefetch = async () => {
     if (!user) return;
 
-    const getMyProjectsUseCase = container.getGetMyProjectsUseCase(user.id);
+    const getMyProjectsUseCase = container.getGetMyProjectsUseCase();
 
     setLoading(true);
     setError(null);

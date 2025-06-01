@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useCreateProject } from "../hooks/useCreateProject";
 
 import { useAuth } from "@/core/context/AuthContext";
+import { Modal } from "@/shared/components/Modal";
 import SVGComponent from "@/shared/components/SVGComponent";
 import type { Project } from "../../domain/entities/Project";
 import { CreateForm } from "./CreateForm";
@@ -9,21 +9,8 @@ import { CreateForm } from "./CreateForm";
 export const HeaderProfile = () => {
   const { user } = useAuth();
 
-  const { createProject, loading: creating } = useCreateProject();
-
   const [showForm, setShowForm] = useState(false);
   const [editingProject] = useState<Project | null>(null);
-
-  const handleCreate = async (data: {
-    title: string;
-    description: string;
-    url: string;
-  }) => {
-    await createProject(data.title, data.description, data.url);
-
-    setShowForm(false);
-    window.location.reload();
-  };
 
   return (
     <div className="overflow-hidden bg-gray-900">
@@ -36,17 +23,12 @@ export const HeaderProfile = () => {
             </h2>
             <p className="max-w-xl mb-4 text-base text-gray-400 md:text-lg">
               Esta es tu zona de creación total: diseña proyectos desde cero,
-              edítalos a tu estilo y explora lo que otros han construido. Tienes
-              control completo para darle vida a tus ideas, ajustar cada detalle
-              y compartir tus creaciones con quien quieras.
-              <span className="text-teal-accent-400">¿Inspiración?</span> Aquí
-              encontrarás proyectos increíbles para motivarte. El poder está en
-              tus manos.
+              edítalos a tu estilo y explora lo que otros han construido...
             </p>
             <button
               type="button"
-              onClick={() => setShowForm(!showForm)}
-              aria-label="Mostrar/ocultar formulario"
+              onClick={() => setShowForm(true)}
+              aria-label="Mostrar formulario"
               className="inline-flex items-center font-semibold tracking-wider transition-colors duration-200 text-teal-accent-400 hover:text-teal-accent-700 cursor-pointer focus:outline-none"
             >
               ¡Crea un nuevo proyecto!
@@ -61,41 +43,19 @@ export const HeaderProfile = () => {
           </div>
           <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
             <div className="relative">
-              <svg
-                viewBox="0 0 52 24"
-                fill="currentColor"
-                className="absolute bottom-0 right-0 z-0 hidden w-32 -mb-8 -mr-20 text-teal-accent-400 lg:w-32 lg:-mr-16 sm:block"
-              >
-                <defs>
-                  <pattern
-                    id="766323e1-e594-4ffd-a688-e7275079d540"
-                    x="0"
-                    y="0"
-                    width=".135"
-                    height=".30"
-                  >
-                    <circle cx="1" cy="1" r=".7" />
-                  </pattern>
-                </defs>
-                <rect
-                  fill="url(#766323e1-e594-4ffd-a688-e7275079d540)"
-                  width="52"
-                  height="24"
-                />
-              </svg>
-              {showForm ? (
-                <CreateForm
-                  onSubmit={handleCreate}
-                  loading={creating}
-                  initialProject={editingProject || undefined}
-                />
-              ) : (
-                <SVGComponent percental={"90%"} />
-              )}
+              <SVGComponent percental={"90%"} />
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modal con el formulario */}
+      <Modal show={showForm} onClose={() => setShowForm(false)}>
+        <CreateForm
+          onClose={() => setShowForm(false)}
+          initialProject={editingProject || undefined}
+        />
+      </Modal>
     </div>
   );
 };

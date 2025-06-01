@@ -7,4 +7,7 @@ export interface Project {
   authorName: string;
   createdAt: Date;
   isdeleted: boolean;
+  tags: string[]; 
+  thumbnailUrl: string; 
+  visibility: "public" | "private";
 }

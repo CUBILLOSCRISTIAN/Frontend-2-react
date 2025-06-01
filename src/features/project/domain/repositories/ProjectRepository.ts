@@ -6,4 +6,5 @@ export interface ProjectRepository {
   getAllProjects(): Promise<Project[]>;
   update(project: Project): Promise<void>;
   delete(projectId: string): Promise<void>;
+  uploadImage(image: File): Promise<string>;
 }

@@ -14,7 +14,7 @@ export const useDeleteProject = () => {
       return null;
     }
 
-    const deleteProjectUseCase = container.getDeleteProjectUseCase(user.id);
+    const deleteProjectUseCase = container.getDeleteProjectUseCase();
 
     setLoading(true);
     setError(null);

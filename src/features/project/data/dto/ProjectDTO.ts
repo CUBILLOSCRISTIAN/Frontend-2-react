@@ -8,4 +8,7 @@ export interface ProjectDTO {
   authorId?: string;
   authorName?: string;
   isDeleted: boolean;
+  tags?: string[];
+  thumbnailUrl?: string;
+  visibility?: "public" | "private";
 }

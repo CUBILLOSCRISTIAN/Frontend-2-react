@@ -15,7 +15,7 @@ export const useUpdateProject = () => {
       return null;
     }
 
-    const updateProjectUseCase = container.getUpdateProjectUseCase(user.id);
+    const updateProjectUseCase = container.getUpdateProjectUseCase();
 
     setLoading(true);
     setError(null);

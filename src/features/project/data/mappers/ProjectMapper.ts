@@ -12,6 +12,9 @@ export const ProjectMapper = {
     description: project.description,
     createdAt: project.createdAt.toISOString(),
     isDeleted: project.isdeleted,
+    tags: project.tags,
+    thumbnailUrl: project.thumbnailUrl,
+    visibility: project.visibility,
   }),
 
   toDomain: (dto: ProjectDTO): Project => ({
@@ -23,5 +26,8 @@ export const ProjectMapper = {
     authorId: dto.userId,
     authorName: dto.authorName ?? "",
     isdeleted: dto.isDeleted,
+    tags: dto.tags ?? [],
+    thumbnailUrl: dto.thumbnailUrl!,
+    visibility: dto.visibility ?? "public",
   }),
 };

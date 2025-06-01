@@ -13,6 +13,8 @@ import { DeleteProject } from "@/features/project/domain/usecases/DeleteProject"
 import { ProjectRepositoryImpl } from "@/features/project/data/repositories/ProjectRepositoryImpl";
 import { FirebaseProjectDatasource } from "@/features/project/data/datasources/FirebaseProjectDatasource";
 import { GetAllProjects } from "@/features/project/domain/usecases/GetAllProjects";
+import { CloudinaryService } from "@/features/project/data/datasources/CloudinaryService";
+import { UploadImage } from "@/features/project/domain/usecases/UploadImage";
 
 // Crear una instancia de todos los casos de uso
 export const container = {
@@ -21,33 +23,62 @@ export const container = {
   logoutUser: new LogoutUser(new FirebaseAuthService()),
   getCurrentUser: new GetCurrentUser(new FirebaseAuthService()),
 
-  getCreateProjectUseCase: (userId: string) => {
+  cloudinaryService: new CloudinaryService(
+    import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || "",
+    import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET || ""
+  ),
+
+  getCreateProjectUseCase: () => {
     const datasource = new FirebaseProjectDatasource();
-    const repository = new ProjectRepositoryImpl(datasource, userId);
+    const repository = new ProjectRepositoryImpl(
+      datasource,
+      container.cloudinaryService
+    );
     return new CreateProject(repository);
   },
 
-  getGetMyProjectsUseCase: (userId: string) => {
+  getUpdaloadImageUseCase: () => {
     const datasource = new FirebaseProjectDatasource();
-    const repository = new ProjectRepositoryImpl(datasource, userId);
+    const repository = new ProjectRepositoryImpl(
+      datasource,
+      container.cloudinaryService
+    );
+    return new UploadImage(repository);
+  },
+
+  getGetMyProjectsUseCase: () => {
+    const datasource = new FirebaseProjectDatasource();
+    const repository = new ProjectRepositoryImpl(
+      datasource,
+      container.cloudinaryService
+    );
     return new GetMyProjects(repository);
   },
 
   getAllProjectsUseCase: () => {
     const datasource = new FirebaseProjectDatasource();
-    const repository = new ProjectRepositoryImpl(datasource, "");
+    const repository = new ProjectRepositoryImpl(
+      datasource,
+      container.cloudinaryService
+    );
     return new GetAllProjects(repository);
   },
 
-  getUpdateProjectUseCase: (userId: string) => {
+  getUpdateProjectUseCase: () => {
     const datasource = new FirebaseProjectDatasource();
-    const repository = new ProjectRepositoryImpl(datasource, userId);
+    const repository = new ProjectRepositoryImpl(
+      datasource,
+      container.cloudinaryService
+    );
     return new UpdateProject(repository);
   },
 
-  getDeleteProjectUseCase: (userId: string) => {
+  getDeleteProjectUseCase: () => {
     const datasource = new FirebaseProjectDatasource();
-    const repository = new ProjectRepositoryImpl(datasource, userId);
+    const repository = new ProjectRepositoryImpl(
+      datasource,
+      container.cloudinaryService
+    );
     return new DeleteProject(repository);
   },
 };

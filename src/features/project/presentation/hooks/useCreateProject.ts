@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/core/context/AuthContext";
 import { container } from "@/core/di/container";
+import type { Project } from "../../domain/entities/Project";
 
 export const useCreateProject = () => {
   const { user } = useAuth();
@@ -8,34 +9,21 @@ export const useCreateProject = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  const createProject = async (
-    title: string,
-    description: string,
-    url: string
-  ): Promise<void | null> => {
+  const createProject = async (project: Project): Promise<void | null> => {
     if (!user) {
       setError("Usuario no autenticado.");
       return null;
     }
 
-    const createProjectUseCase = container.getCreateProjectUseCase(user.id);
+    const createProjectUseCase = container.getCreateProjectUseCase();
 
     setLoading(true);
     setError(null);
     setSuccess(false);
 
     try {
-      const payload = {
-        title,
-        description,
-        url,
-        authorId: user.id,
-        authorName: user.name,
-        isdeleted: false,
-      };
-
-      console.log("Este es el payload a crear: " + payload.authorName);
-      await createProjectUseCase.execute(payload);
+      console.log("Creating project hook:", project);
+      await createProjectUseCase.execute(project);
       setSuccess(true);
     } catch (err) {
       setError((err as Error).message);
