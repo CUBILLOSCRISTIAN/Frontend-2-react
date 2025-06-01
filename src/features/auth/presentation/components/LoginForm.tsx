@@ -98,6 +98,11 @@ export const LoginForm = () => {
           Regístrate
         </a>
       </p>
+      <div className="text-right text-sm">
+        <Link to="/forgot-password" className="text-blue-500 hover:underline">
+          ¿Olvidaste tu contraseña?
+        </Link>
+      </div>
     </form>
   );
 };
