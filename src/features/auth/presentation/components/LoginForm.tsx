@@ -99,9 +99,12 @@ export const LoginForm = () => {
         </a>
       </p>
       <div className="text-right text-sm">
-        <Link to="/forgot-password" className="text-blue-500 hover:underline">
+        <a
+          href="/forgot-password"
+          className="text-teal-accent-700 hover:underline"
+        >
           ¿Olvidaste tu contraseña?
-        </Link>
+        </a>
       </div>
     </form>
   );
