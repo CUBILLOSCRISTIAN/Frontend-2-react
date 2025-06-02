@@ -64,7 +64,7 @@ export const ProjectCard = ({
               aria-label="Category"
               onClick={(e) => e.stopPropagation()}
             >
-              Desarrollo
+              {project.tags}
             </a>{" "}
             <span className="text-gray-600 dark:text-gray-400">
               — {project.createdAt.getDate().toString().padStart(2, "0")} -{" "}
@@ -88,7 +88,7 @@ export const ProjectCard = ({
             </span>
           </p>
           <a
-            href={project.url}
+            href={`/project/${project.id}`}
             aria-label="Article"
             title={project.title}
             className="inline-block mb-3 text-2xl font-bold leading-5 text-black dark:text-white transition-colors duration-200 hover:text-teal-accent-400  text-ellipsis"

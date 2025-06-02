@@ -6,6 +6,7 @@ import { MainLayout } from "@/shared/layouts/MainLayout";
 import { AllProjectsPage } from "@/features/project/presentation/pages/AllProjectsPage";
 import { MyProjectsPage } from "@/features/project/presentation/pages/MyProjectsPage";
 import { ForgotPasswordPage } from "@/features/auth/presentation/pages/ForgotPasswordPage";
+import { DetailProjectPage } from "@/features/project/presentation/pages/DetailProjectPage";
 
 export const AppRouter = () => {
   return (
@@ -19,6 +20,12 @@ export const AppRouter = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/proyectos" element={<AllProjectsPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
+            {/* Detalle de proyecto */}
+            <Route
+              path="/proyectos/:projectId"
+              element={<DetailProjectPage />}
+            />
 
             {/* Privadas */}
             <Route

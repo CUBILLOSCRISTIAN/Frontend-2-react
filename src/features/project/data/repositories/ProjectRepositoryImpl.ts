@@ -16,6 +16,12 @@ export class ProjectRepositoryImpl implements ProjectRepository {
     this.datasource = datasource;
   }
 
+  async getOneProject(projectId: string): Promise<Project | null> {
+    const dto = await this.datasource.getOneProject(projectId);
+    if (!dto) return null;
+    return ProjectMapper.toDomain(dto);
+  }
+
   uploadImage(image: File): Promise<string> {
     return this.uploadImageUrl.upload(image);
   }

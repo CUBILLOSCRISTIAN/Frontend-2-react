@@ -15,6 +15,7 @@ import { FirebaseProjectDatasource } from "@/features/project/data/datasources/F
 import { GetAllProjects } from "@/features/project/domain/usecases/GetAllProjects";
 import { CloudinaryService } from "@/features/project/data/datasources/CloudinaryService";
 import { UploadImage } from "@/features/project/domain/usecases/UploadImage";
+import { GetOneProject } from "@/features/project/domain/usecases/GetOneProject";
 
 // Crear una instancia de todos los casos de uso
 export const container = {
@@ -80,5 +81,14 @@ export const container = {
       container.cloudinaryService
     );
     return new DeleteProject(repository);
+  },
+
+  getOneProjectUseCase: () => {
+    const datasource = new FirebaseProjectDatasource();
+    const repository = new ProjectRepositoryImpl(
+      datasource,
+      container.cloudinaryService
+    );
+    return new GetOneProject(repository);
   },
 };

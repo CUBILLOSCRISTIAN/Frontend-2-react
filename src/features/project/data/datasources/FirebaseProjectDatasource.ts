@@ -5,6 +5,7 @@ import {
   setDoc,
   updateDoc,
   getDocs,
+  getDoc,
   query,
   where,
   serverTimestamp,
@@ -54,5 +55,15 @@ export class FirebaseProjectDatasource {
     await updateDoc(docRef, {
       isDeleted: true,
     });
+  }
+  async getOneProject(projectId: string): Promise<ProjectDTO | null> {
+    const docRef = doc(firestore, "projects", projectId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return docSnap.data() as ProjectDTO;
+    } else {
+      return null;
+    }
   }
 }

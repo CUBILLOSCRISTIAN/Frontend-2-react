@@ -7,4 +7,5 @@ export interface ProjectRepository {
   update(project: Project): Promise<void>;
   delete(projectId: string): Promise<void>;
   uploadImage(image: File): Promise<string>;
+  getOneProject(projectId: string): Promise<Project | null>;
 }

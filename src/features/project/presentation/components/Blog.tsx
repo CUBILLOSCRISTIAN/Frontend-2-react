@@ -11,7 +11,7 @@ interface ProjectCardProps {
 export const Blog = ({ project }: ProjectCardProps) => {
   return (
     <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-      <a href="/" aria-label="Article">
+      <a href={`/proyectos/${project.id}`} aria-label="Article">
         <img
           src={project.thumbnailUrl}
           className="object-cover w-full h-64 rounded"
@@ -42,7 +42,7 @@ export const Blog = ({ project }: ProjectCardProps) => {
           </span>
         </p>
         <a
-          href="/"
+          href={`/proyectos/${project.id}`}
           aria-label="Article"
           className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
         >
@@ -55,7 +55,7 @@ export const Blog = ({ project }: ProjectCardProps) => {
         </p>
         <div className="flex space-x-4">
           <a
-            href="/"
+            href={`/project/${project.id}`}
             aria-label="Likes"
             className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
           >

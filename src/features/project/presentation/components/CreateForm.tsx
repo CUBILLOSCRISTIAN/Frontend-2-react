@@ -36,7 +36,6 @@ export const CreateForm = ({ initialProject, onClose }: CreateFormProps) => {
     if (imageFile) {
       const uploadedUrl = await uploadImage(imageFile);
 
-      // alert("Imagen subida: " + uploadedUrl);
       if (uploadedUrl) {
         finalThumbnailUrl = uploadedUrl;
       } else {
@@ -44,8 +43,6 @@ export const CreateForm = ({ initialProject, onClose }: CreateFormProps) => {
         return;
       }
     }
-
-    alert("Creando proyecto..." + finalThumbnailUrl);
 
     const newProject: Project = {
       title,

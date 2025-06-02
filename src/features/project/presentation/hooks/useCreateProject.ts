@@ -22,7 +22,6 @@ export const useCreateProject = () => {
     setSuccess(false);
 
     try {
-      console.log("Creating project hook:", project);
       await createProjectUseCase.execute(project);
       setSuccess(true);
     } catch (err) {
