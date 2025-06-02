@@ -1,3 +1,5 @@
+import type { CommentEntity } from "./Comment";
+
 export interface Project {
   id: string;
   title: string;
@@ -7,7 +9,9 @@ export interface Project {
   authorName: string;
   createdAt: Date;
   isdeleted: boolean;
-  tags: string[]; 
-  thumbnailUrl: string; 
+  tags: string[];
+  thumbnailUrl: string;
   visibility: "public" | "private";
+  likes: number;
+  comments: CommentEntity[];
 }
