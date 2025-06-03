@@ -3,4 +3,6 @@ export interface User {
   email: string;
   name: string;
   token: string;
+  followers: string[];
+  following: string[];
 }

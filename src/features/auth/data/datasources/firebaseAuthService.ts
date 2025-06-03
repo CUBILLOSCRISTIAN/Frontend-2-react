@@ -1,4 +1,4 @@
-import type { AuthRepository } from "../domain/repositories/AuthRepository";
+
 import {
   updateProfile,
   createUserWithEmailAndPassword,
@@ -8,13 +8,16 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import { getAuth } from "firebase/auth";
-import type { User } from "../domain/entities/User";
-import { firebaseToDomainUser } from "./mappers/firebase-to-domain-user.mapper";
-import { mapFirebaseErrorToAppError } from "./mappers/mapFirebaseError";
+import type { AuthRepository } from "../../domain/repositories/AuthRepository";
+import type { User } from "../../domain/entities/User";
+import { firebaseToDomainUser } from "../mappers/firebase-to-domain-user.mapper";
+import { mapFirebaseErrorToAppError } from "../mappers/mapFirebaseError";
+
 
 const auth = getAuth();
 
 export class FirebaseAuthService implements AuthRepository {
+  
   async register(email: string, password: string, name: string): Promise<User> {
     try {
       const userCredential = await createUserWithEmailAndPassword(
