@@ -3,7 +3,6 @@ import { LoginUser } from "@/features/auth/domain/usecases/loginUser";
 import { RegisterUser } from "@/features/auth/domain/usecases/registerUser";
 import { LogoutUser } from "@/features/auth/domain/usecases/logoutUser";
 import { GetCurrentUser } from "@/features/auth/domain/usecases/getCurrentUser";
-import { FirebaseAuthService } from "@/features/auth/data/firebaseAuthService";
 
 import { CreateProject } from "@/features/project/domain/usecases/CreateProject";
 import { GetMyProjects } from "@/features/project/domain/usecases/GetMyProjects";
@@ -16,6 +15,7 @@ import { GetAllProjects } from "@/features/project/domain/usecases/GetAllProject
 import { CloudinaryService } from "@/features/project/data/datasources/CloudinaryService";
 import { UploadImage } from "@/features/project/domain/usecases/UploadImage";
 import { GetOneProject } from "@/features/project/domain/usecases/GetOneProject";
+import { FirebaseAuthService } from "@/features/auth/data/datasources/firebaseAuthService";
 
 // Crear una instancia de todos los casos de uso
 export const container = {

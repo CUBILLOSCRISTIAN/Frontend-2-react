@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ResetPasswordUser } from "../../domain/usecases/resetPasswordUser";
-import { FirebaseAuthService } from "../../data/firebaseAuthService";
+import { FirebaseAuthService } from "../../data/datasources/firebaseAuthService";
 
 export const ForgotPasswordPage: React.FC = () => {
   const [email, setEmail] = useState("");
