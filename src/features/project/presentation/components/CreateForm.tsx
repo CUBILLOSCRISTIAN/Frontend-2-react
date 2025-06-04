@@ -56,6 +56,8 @@ export const CreateForm = ({ initialProject, onClose }: CreateFormProps) => {
       authorName: user?.name || "",
       createdAt: new Date(Date.now()),
       isdeleted: false,
+      likes: 0,
+      comments: [],
     };
 
     await createProject(newProject);
