@@ -29,5 +29,7 @@ export const ProjectMapper = {
     tags: dto.tags ?? [],
     thumbnailUrl: dto.thumbnailUrl!,
     visibility: dto.visibility ?? "public",
+    likes: dto.likes ?? 0,
+    comments: dto.comments ?? [],
   }),
 };

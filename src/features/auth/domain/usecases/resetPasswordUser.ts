@@ -1,9 +1,13 @@
 import type { AuthRepository } from "../repositories/AuthRepository";
 
 export class ResetPasswordUser {
-    constructor(private readonly authRepo: AuthRepository) { }
+  private readonly authRepo: AuthRepository;
 
-    async execute(email: string): Promise<void> {
-        await this.authRepo.resetPassword(email);
-    }
+  constructor(authRepo: AuthRepository) {
+    this.authRepo = authRepo;
+  }
+
+  async execute(email: string): Promise<void> {
+    await this.authRepo.resetPassword(email);
+  }
 }

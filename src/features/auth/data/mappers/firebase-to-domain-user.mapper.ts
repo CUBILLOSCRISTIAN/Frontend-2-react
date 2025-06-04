@@ -11,5 +11,7 @@ export const firebaseToDomainUser = async (
     email: firebaseUser.email ?? "",
     name: firebaseUser.displayName ?? "",
     token: token, // Devolvemos la promesa directamente
+    followers: [],
+    following: [],
   };
 };

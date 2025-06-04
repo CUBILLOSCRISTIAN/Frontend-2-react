@@ -22,7 +22,6 @@ export const ProjectDialog = ({
   onClose,
   mode,
   project,
-  onSubmitEdit,
   onConfirmDelete,
   loading = false,
 }: ProjectDialogProps) => {
@@ -35,11 +34,7 @@ export const ProjectDialog = ({
               <Dialog.Title className="text-xl font-bold mb-4 text-center">
                 Editar proyecto
               </Dialog.Title>
-              <CreateForm
-                onSubmit={onSubmitEdit}
-                loading={loading}
-                initialProject={project}
-              />
+              <CreateForm onClose={onClose} initialProject={project} />
             </>
           ) : (
             <>

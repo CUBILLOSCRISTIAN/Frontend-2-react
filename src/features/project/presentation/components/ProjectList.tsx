@@ -1,5 +1,4 @@
 import type { Project } from "@/features/project/domain/entities/Project";
-import { ProjectCard } from "./ProjectCard";
 import { ProjectCardSkeleton } from "./ProjectCardSkeleton";
 import { useAuth } from "@/core/context/AuthContext";
 import { useUpdateProject } from "../hooks/useUpdateProject";

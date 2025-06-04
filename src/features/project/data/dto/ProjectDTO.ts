@@ -11,4 +11,16 @@ export interface ProjectDTO {
   tags?: string[];
   thumbnailUrl?: string;
   visibility?: "public" | "private";
+  likes?: number;
+  comments?: string[];
+}
+
+export interface CommentDTO {
+  id: string;
+  authorId: string;
+  authorName: string;
+  content: string;
+  createdAt: string;
+  likes?: number;
+  replies?: CommentDTO[];
 }
